@@ -12,14 +12,19 @@ export default new Router({
       component: Home
     },
     {
-      path: "/features",
-      name: "features",
-      component: () => import(/* webpackChunkName: "about" */ "@/views/Features.vue")
+      path: "/blog",
+      name: "blog",
+      component: () => import(/* webpackChunkName: "about" */ "@/views/Blog.vue")
     },
     {
-      path: "/discord",
-      name: "discord",
-      component: () => import("@/views/Discord.vue")
+      path: "/projects",
+      name: "projects",
+      component: () => import("@/views/Projects.vue")
+    },
+    {
+      path: "/contact",
+      name: "contact",
+      component: () => import("@/views/Contact.vue")
     }
   ]
 });
