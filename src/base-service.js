@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import axios from 'axios';
-import { apiPoints } from './endpoints';
 
 export default class BaseService {
   constructor() {
