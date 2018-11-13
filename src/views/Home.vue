@@ -1,7 +1,7 @@
 <template>
   <v-container py-5>
     <v-layout>
-    <v-flex xs12 sm6 offset-sm3>
+    <v-flex xs12 sm10 offset-sm1>
       <v-card>
         <v-img
           src="https://cdn.vuetifyjs.com/images/cards/desert.jpg"
@@ -17,35 +17,38 @@
 
         <v-card-actions>
           <v-chip outline color="red">
-            <v-icon left>build</v-icon>vuejs
+            <v-icon left>mdi-vuejs</v-icon> Vue.js
           </v-chip>
           <v-chip outline color="red">
-            <v-icon left>build</v-icon>language-html5
+            <v-icon left>mdi-language-html5</v-icon>HTML5
           </v-chip>
           <v-chip outline color="red">
-            <v-icon left>build</v-icon>language-javascript
+            <v-icon left>mdi-language-javascript</v-icon>JavaScript
           </v-chip>
-            <v-chip outline color="red">
-            <v-icon left>build</v-icon>language-csharp
+          <v-chip outline color="red">
+            <v-icon left>mdi-language-csharp</v-icon>C#
           </v-chip>
+          <v-chip outline color="red">
+            <v-icon left>mdi-language-css3</v-icon>CSS3
           </v-chip>
-            <v-chip outline color="red">
-            <v-icon left>build</v-icon>language-css3
+          <v-chip outline color="red">
+            <v-icon left>mdi-nodejs</v-icon>Nodejs
           </v-chip>
-          </v-chip>
-            <v-chip outline color="red">
-            <v-icon left>build</v-icon>nodejs
+          <v-chip outline color="red">
+            <v-icon left>mdi-react</v-icon>React
           </v-chip>
         </v-card-actions>
       </v-card>
     </v-flex>
   </v-layout>
 
- <v-divider></v-divider>
+ 
 
  <v-layout>
-    <v-flex xs12 sm6 offset-sm3>
-    
+   
+    <v-flex xs12 sm8 offset-sm2>
+      <h2> Projects</h2>
+    <v-divider></v-divider>
     <v-treeview
     v-model="tree"
     :open="open"
@@ -142,10 +145,12 @@ export default {
           children: [
             {
               name: 'static',
-              children: [{
-                name: 'logo.png',
-                file: 'png'
-              }]
+              children: [
+                {
+                  name: 'logo.png',
+                  file: 'png'
+                }
+              ]
             },
             {
               name: 'favicon.ico',

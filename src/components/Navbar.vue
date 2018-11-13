@@ -74,6 +74,6 @@ export default {
   background-color: #a3bad6cf;
 }
 .title-colour {
-  color: #505f71;
+  color: #fff;
 }
 </style>
