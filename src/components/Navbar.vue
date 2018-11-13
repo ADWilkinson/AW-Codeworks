@@ -1,13 +1,13 @@
 <template>
 
 <v-toolbar>
-  <v-spacer></v-spacer>
+  <v-spacer class='font-weight-bold title title-colour'>AWCODEWORKS</v-spacer>
   <v-toolbar-items>
     <v-btn 
     v-for='link in links' 
     :key="link.id" 
     v-on:click='redirect(link)' 
-    :class='{ active: link === currentTab ? true : false }' 
+    :class='[{ active: link === currentTab ? true : false }, "title-colour"]' 
     v-text='link' 
     flat>
     </v-btn>
@@ -23,12 +23,17 @@ export default {
   name: 'Navbar',
   props: {
     rootTab: {
-      type: String
+      type: String,
+      required: true
+    },
+    navLinks: {
+      type: Array,
+      required: true
     }
   },
   data() {
     return {
-      links: ['Home', 'Blog', 'Projects', 'Contact']
+      links: []
     };
   },
   computed: {
@@ -48,11 +53,17 @@ export default {
       }
     }
   },
+  created() {
+    this.links = this.navLinks;
+  },
   mounted() {
     if (storage.getItem('sessionCurrentTab') === null) {
       this.$store.commit('app/setCurrentTab', this.rootTab);
     } else {
-      this.$store.commit('app/setCurrentTab', storage.getItem('sessionCurrentTab'));
+      this.$store.commit(
+        'app/setCurrentTab',
+        storage.getItem('sessionCurrentTab')
+      );
     }
   }
 };
@@ -60,7 +71,9 @@ export default {
 
 <style scoped>
 .active {
-  background-color: #a3bad6cf
-  ;
+  background-color: #a3bad6cf;
+}
+.title-colour {
+  color: #505f71;
 }
 </style>

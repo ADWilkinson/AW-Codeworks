@@ -1,6 +1,6 @@
 <template>
   <v-app>
-  <Navbar rootTab='Dogebot'></Navbar>
+  <Navbar rootTab='Dogebot' :navLinks='links'></Navbar>
   <v-content>
         <v-container fluid>
             <router-view></router-view>
@@ -15,6 +15,11 @@ import Navbar from '@/components/Navbar.vue';
 export default {
   components: {
     Navbar
+  },
+  data() {
+    return {
+      links: ['Home', 'Blog', 'Projects']
+    };
   }
 };
 </script>

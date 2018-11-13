@@ -1,4 +1,5 @@
 export default {
-    setCurrentTab: (state, payload) => {state.currentTab = payload}
-    
-}
+  setCurrentTab: (state, payload) => {
+    state.currentTab = payload;
+  }
+};

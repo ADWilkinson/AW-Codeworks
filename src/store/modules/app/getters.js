@@ -1,3 +1,5 @@
-export default{
-    getCurrentTab: (state) => { return state.currentTab}
-}
+export default {
+  getCurrentTab: state => {
+    return state.currentTab;
+  }
+};
