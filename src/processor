@@ -22,4 +22,11 @@
       wordCount: values.virtuals.wordCount
     }); 
   } 
+  
+  let responseObj = {
+    user: userProfile,
+    posts: userPosts
+  };
+  
+  return responseObj;
 }
