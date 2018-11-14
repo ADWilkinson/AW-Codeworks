@@ -1,6 +1,6 @@
 <template>
   <v-app dark>
-    <Navbar rootTab='Dogebot' :navLinks='links'></Navbar>
+    <Navbar rootTab='Home' :navLinks='links'></Navbar>
     <v-content>
       <v-container fluid>
         <router-view></router-view>

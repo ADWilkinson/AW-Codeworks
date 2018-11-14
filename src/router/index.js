@@ -14,8 +14,7 @@ export default new Router({
     {
       path: '/blog',
       name: 'blog',
-      component: () =>
-        import(/* webpackChunkName: "about" */ '@/views/Blog.vue')
+      component: () => import('@/views/Blog.vue')
     },
     {
       path: '/projects',

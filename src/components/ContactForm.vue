@@ -40,7 +40,8 @@ export default {
       message: '',
       rules: {
         email: v => (v || '').match(/@/) || 'Please enter a valid email',
-        length: len => v => (v || '').length <= len || `Invalid character length, limit: ${len}`,
+        length: len => v =>
+          (v || '').length <= len || `Invalid character length, limit: ${len}`,
         required: v => !!v || 'This field is required'
       }
     };
