@@ -1,4 +1,4 @@
-# aw-project
+# AWCodeworks
 
 ## Project setup
 ```
