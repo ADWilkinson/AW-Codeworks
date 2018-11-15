@@ -18,7 +18,7 @@ export default {
   },
   data() {
     return {
-      links: ['Home', 'Blog', 'Projects']
+      links: ['Home', 'Blog']
     };
   }
 };
