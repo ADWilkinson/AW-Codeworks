@@ -15,11 +15,6 @@ export default new Router({
       path: '/blog',
       name: 'blog',
       component: () => import('@/views/Blog.vue')
-    },
-    {
-      path: '/projects',
-      name: 'projects',
-      component: () => import('@/views/Projects.vue')
     }
   ]
 });
