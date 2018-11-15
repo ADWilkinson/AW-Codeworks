@@ -28,9 +28,10 @@ function () {
             let data = JSON.stringify(response.data);
             return data;
           }).catch(error => console.log(error));
+          response.set('Access-Control-Allow-Origin', '*');
           resData.then(data => response.status(200).send(data)).catch(error => console.log(error));
 
-        case 3:
+        case 4:
         case "end":
           return _context.stop();
       }

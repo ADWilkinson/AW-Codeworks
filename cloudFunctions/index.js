@@ -14,6 +14,7 @@ exports.mediumData = functions.https.onRequest(async (request, response) => {
       return data;
     })
     .catch(error => console.log(error));
-
+    
+  response.set('Access-Control-Allow-Origin', '*');
   resData.then(data => response.status(200).send(data)).catch(error => console.log(error));
 });
