@@ -4,11 +4,7 @@ var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefau
 
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
 
-var _promise = _interopRequireDefault(require("@babel/runtime/core-js/promise"));
-
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
-
-require("@babel/polyfill");
 
 var _axios = _interopRequireDefault(require("./axios"));
 
@@ -23,24 +19,18 @@ function () {
   var _ref = (0, _asyncToGenerator2.default)(
   /*#__PURE__*/
   _regenerator.default.mark(function _callee(request, response) {
-    var service, res;
+    var service, resData;
     return _regenerator.default.wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
           service = new _axios.default();
-          _context.next = 3;
-          return new _promise.default((resolve, reject) => {
-            service.api.get('https://medium.com/@andywilkinson1993/latest?format=json').then(response => {
-              console.log(response);
-              resolve(response);
-            }).catch(error => reject(error));
-          });
+          resData = service.api.get('https://medium.com/@andywilkinson1993/latest?format=json').then(response => {
+            let data = JSON.stringify(response.data);
+            return data;
+          }).catch(error => console.log(error));
+          resData.then(data => response.status(200).send(data)).catch(error => console.log(error));
 
         case 3:
-          res = _context.sent;
-          response.send(res);
-
-        case 5:
         case "end":
           return _context.stop();
       }

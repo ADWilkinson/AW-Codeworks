@@ -25,7 +25,8 @@ const initAxios = () => {
       Accept: 'application/json',
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
-      'X-Requested-With': '*'
+      'Access-Control-Allow-Methods': 'GET, PUT, POST, DELETE, OPTIONS',
+      'crossDomain': true
     }
   });
 
