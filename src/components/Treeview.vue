@@ -21,18 +21,10 @@
 <script>
 export default {
   props: {
-    tree,
-    open,
-    items,
-    icons
-  },
-  components: {
-  
-  },
-  data() {
-    return {
-      
-    };
+    tree: Array,
+    open: Array,
+    items: Array,
+    icons: Object
   }
 };
 </script>

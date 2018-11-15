@@ -12,7 +12,7 @@ export default {
     }
   },
   created() {
-    if(this.getMediumData === null && !sessionStorage.getItem('mediumData')){
+    if (this.getMediumData === null && sessionStorage.getItem('mediumData') === null) {
       this.$store.dispatch('blog/retrieveMediumData');
       sessionStorage.setItem('mediumData', this.getMediumData);
     } else {

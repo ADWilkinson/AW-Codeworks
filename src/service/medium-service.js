@@ -10,7 +10,7 @@ export default class MediumService extends BaseService {
       this.api
         .get('https://us-central1-awcodeworks.cloudfunctions.net/mediumData')
         .then(response => {
-          let resData = this.processMediumData(response);
+          let resData = this.processMediumData(response.data);
           resolve(resData);
         })
         .catch(error => reject(error));
@@ -18,35 +18,38 @@ export default class MediumService extends BaseService {
   }
 
   processMediumData(data) {
-    let slicedData = data.slice(0, 15);
-    let res = JSON.parse(slicedData);
-    let userRefs = resObj.payload.references;
-    let user = Object.values(userRefs.User);
-    let posts = Object.values(userRefs.Post);
-    let social = Object.values(userRefs.SocialStats);
+    if (data !== null || data !== typeof undefined) {
+      let slicedData = data.replace('])}while(1);</x>','');
+      console.log(slicedData)
+      let res = JSON.parse(slicedData);
+      let userRefs = res.payload.references;
+      let user = Object.values(userRefs.User);
+      let posts = Object.values(userRefs.Post);
+      let social = Object.values(userRefs.SocialStats);
 
-    let userProfile = {
-      bio: user.bio,
-      name: user.name,
-      followers: social.userFollowedByCount
-    };
+      let userProfile = {
+        bio: user.bio,
+        name: user.name,
+        followers: social.userFollowedByCount
+      };
 
-    let userPosts = [];
+      let userPosts = [];
 
-    for (values of convertedPosts) {
-      userPosts.push({
-        title: values.title,
-        subtitle: values.content.subtitle,
-        readingTime: values.virtuals.readingTime,
-        wordCount: values.virtuals.wordCount
-      });
+      for (let values of posts) {
+        userPosts.push({
+          title: values.title,
+          subtitle: values.content.subtitle,
+          readingTime: values.virtuals.readingTime,
+          wordCount: values.virtuals.wordCount
+        });
+      }
+
+      let responseObj = {
+        user: userProfile,
+        posts: userPosts
+      };
+
+      return responseObj;
     }
-
-    let responseObj = {
-      user: userProfile,
-      posts: userPosts
-    };
-
-    return responseObj;
   }
 }
