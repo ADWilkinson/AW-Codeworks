@@ -8,9 +8,7 @@ export default class MediumService extends BaseService {
   async GetMediumData() {
     return await new Promise((resolve, reject) => {
       this.api
-        .get(
-          `${'https://cors-anywhere.herokuapp.com/'}https://medium.com/@andywilkinson1993/latest?format=json`
-        )
+        .get('https://us-central1-awcodeworks.cloudfunctions.net/mediumData')
         .then(response => {
           resolve(response);
         })
