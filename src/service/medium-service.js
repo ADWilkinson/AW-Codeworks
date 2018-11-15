@@ -18,7 +18,8 @@ export default class MediumService extends BaseService {
   }
 
   processMediumData(data) {
-    let res = JSON.parse(data);
+    let slicedData = data.slice(0, 15);
+    let res = JSON.parse(slicedData);
     let userRefs = resObj.payload.references;
     let user = Object.values(userRefs.User);
     let posts = Object.values(userRefs.Post);
