@@ -20,7 +20,6 @@ export default class MediumService extends BaseService {
   processMediumData(data) {
     if (data !== null || data !== typeof undefined) {
       let slicedData = data.replace('])}while(1);</x>','');
-      console.log(slicedData)
       let res = JSON.parse(slicedData);
       let userRefs = res.payload.references;
       let user = Object.values(userRefs.User);
@@ -28,9 +27,9 @@ export default class MediumService extends BaseService {
       let social = Object.values(userRefs.SocialStats);
 
       let userProfile = {
-        bio: user.bio,
-        name: user.name,
-        followers: social.userFollowedByCount
+        bio: user[0].bio,
+        name: user[0].name,
+        followers: social[0].userFollowedByCount
       };
 
       let userPosts = [];
