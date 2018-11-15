@@ -51,25 +51,8 @@
       <h2> Projects</h2>
       <v-divider></v-divider>
       
-      <v-treeview
-      v-model="tree"
-      :open="open"
-      :items="items"
-      activatable
-      item-key="name"
-      open-on-click>
+      <treeview :open="open" :tree="tree" :icons="icons" :items="items" ></treeview>
       
-      <template slot="prepend" slot-scope="{ item, open, leaf }">
-        <v-icon v-if="!item.file">
-          {{ open ? 'mdi-folder-open' : 'mdi-folder' }}
-        </v-icon>
-        <v-icon v-else>
-          {{ files[item.file] }}
-        </v-icon>
-      </template>
-      
-      </v-treeview>
-    
    </v-flex>
  </v-layout>
  
@@ -99,11 +82,13 @@
 
 <script>
 import ContactForm from '@/components/ContactForm.vue';
+import Treeview from '@/components/Treeview.vue';
 
 export default {
   name: 'home',
   components: {
-    ContactForm
+    ContactForm,
+    Treeview
   },
   data() {
     return {
@@ -118,7 +103,7 @@ export default {
         }
       ],
       open: ['public'],
-      files: {
+      icons: {
         html: 'mdi-language-html5',
         js: 'mdi-nodejs',
         json: 'mdi-json',
@@ -144,43 +129,43 @@ export default {
               children: [
                 {
                   name: 'logo.png',
-                  file: 'png'
+                  icon: 'png'
                 }
               ]
             },
             {
               name: 'favicon.ico',
-              file: 'png'
+              icon: 'png'
             },
             {
               name: 'index.html',
-              file: 'html'
+              icon: 'html'
             }
           ]
         },
         {
           name: '.gitignore',
-          file: 'txt'
+          icon: 'txt'
         },
         {
           name: 'babel.config.js',
-          file: 'js'
+          icon: 'js'
         },
         {
           name: 'package.json',
-          file: 'json'
+          icon: 'json'
         },
         {
           name: 'README.md',
-          file: 'md'
+          icon: 'md'
         },
         {
           name: 'vue.config.js',
-          file: 'js'
+          icon: 'js'
         },
         {
           name: 'yarn.lock',
-          file: 'txt'
+          icon: 'txt'
         }
       ]
     };
