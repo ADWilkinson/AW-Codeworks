@@ -7,7 +7,7 @@ const functions = require('firebase-functions');
 exports.mediumData = functions.https.onRequest(async (request, response) => {
   let service = new BaseService();
 
-  var resData = service.api
+  let resData = service.api
     .get('https://medium.com/@andywilkinson1993/latest?format=json')
     .then(response => {
       let data = JSON.stringify(response.data);
