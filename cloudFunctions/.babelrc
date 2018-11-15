@@ -1,9 +1,18 @@
 {
-    "presets": [
-      ["@babel/env", {
+  "presets": [
+    [
+      "@babel/env",
+      {
         "targets": {
           "node": "current"
         }
-      }]
+      }
     ]
-  }
+  ],
+  "plugins": [
+    "syntax-async-functions",
+    "@babel/transform-async-to-generator",
+    "@babel/plugin-transform-regenerator",
+    "@babel/plugin-transform-runtime"
+  ]
+}
