@@ -1,26 +1,18 @@
 # AWCodeworks
 
-## Project setup
+## Technologies Used
 ```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
+- JavaScript (ES6+ Standards)
+- Nodejs
+- Vuejs
+- Webpack
+- Babel 
+- Eslint
+- Firebase Hosting
+- Firebase Cloud Functions
+- Axios
+- Vuex
+- Vue Router
+- Vuetify
 ```
 
-### Lints and fixes files
-```
-npm run lint
-```
