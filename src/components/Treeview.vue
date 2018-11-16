@@ -1,6 +1,6 @@
 <template> 
  <v-treeview
-      v-model="tree"
+      :value="getTree"
       :open="open"
       :items="items"
       activatable
@@ -25,6 +25,13 @@ export default {
     open: Array,
     items: Array,
     icons: Object
+  },
+  computed: {
+    getTree() {
+      get: () => {
+        return this.tree;
+      };
+    }
   }
 };
 </script>
