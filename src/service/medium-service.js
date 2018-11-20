@@ -52,6 +52,20 @@ export default class MediumService extends BaseService {
           wordCount: values.virtuals.wordCount,
           url: profileBaseUrl + values.uniqueSlug
         });
+        userPosts.push({
+          title: values.title,
+          subtitle: values.content.subtitle,
+          readingTime: values.virtuals.readingTime,
+          wordCount: values.virtuals.wordCount,
+          url: profileBaseUrl + values.uniqueSlug
+        });
+        userPosts.push({
+          title: values.title,
+          subtitle: values.content.subtitle,
+          readingTime: values.virtuals.readingTime,
+          wordCount: values.virtuals.wordCount,
+          url: profileBaseUrl + values.uniqueSlug
+        });
       }
 
       let responseObj = {
