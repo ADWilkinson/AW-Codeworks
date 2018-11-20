@@ -84,45 +84,46 @@ export default {
     };
   },
   computed: {
-    getPostData(){
+    getPostData() {
       return this.postData;
     }
   },
   created() {
     const maxPosts = 5;
+    let vm = this;
 
     if (!sessionStorage.getItem('mediumUserData') || !sessionStorage.getItem('mediumPostData')) {
-      return this.$store.dispatch('blog/retrieveMediumData').then(() => {
-        let data = this.$store.getters['blog/getMediumData'];
+      return vm.$store.dispatch('blog/retrieveMediumData').then(() => {
+        let data = vm.$store.getters['blog/getMediumData'];
 
-        this.userData = Array.from(data.user);
+        vm.userData = Array.from(data.user);
         let postArray = Array.from(data.posts);
-
         if (postArray.length <= maxPosts) {
-          this.postData = postArray;
+          vm.postData = postArray;
           sessionStorage.setItem('mediumPostData', JSON.stringify(postArray));
         } else {
           let slicedArr = postArray.slice(0, maxPosts);
-          this.postData = slicedArr;
+          vm.postData = slicedArr;
           sessionStorage.setItem('mediumPostData', JSON.stringify(slicedArr));
-          this.extraPosts = postArray.slice(maxPosts, postArray.length);
+          vm.extraPosts = postArray.slice(maxPosts, postArray.length);
         }
         sessionStorage.setItem('mediumUserData', JSON.stringify(data.user));
       });
     } else {
-      this.userData = JSON.parse(sessionStorage.getItem('mediumUserData'));
-      this.postData = JSON.parse(sessionStorage.getItem('mediumPostData'));
+      vm.userData = JSON.parse(sessionStorage.getItem('mediumUserData'));
+      vm.postData = JSON.parse(sessionStorage.getItem('mediumPostData'));
     }
 
     console.log(this.postData);
   },
   methods: {
     retrieveExtraPosts() {
-      if (this.extraPosts > 0) {
-        for (let index = 0; index < 5; index++) {
-          this.postData.push(this.extraPosts.shift());
+      let vm = this;
+      if (vm.extraPosts.length > 0) {
+        for (let index = 0; index < vm.extraPosts.length; index++) {
+          vm.postData.push(vm.extraPosts.shift());
         }
-        sessionStorage.setItem('mediumPostData', JSON.stringify(this.postData));
+        sessionStorage.setItem('mediumPostData', JSON.stringify(vm.postData));
       }
     }
   }
