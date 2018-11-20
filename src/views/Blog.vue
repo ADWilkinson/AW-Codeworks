@@ -80,7 +80,8 @@ export default {
     return {
       userData: [],
       postData: [],
-      extraPosts: []
+      extraPosts: [],
+      gen: {}
     };
   },
   computed: {
@@ -92,10 +93,11 @@ export default {
     const maxPosts = 5;
     let vm = this;
 
+    this.gen = this.returnPostGenerator();
+
     if (!sessionStorage.getItem('mediumUserData') || !sessionStorage.getItem('mediumPostData')) {
       return vm.$store.dispatch('blog/retrieveMediumData').then(() => {
         let data = vm.$store.getters['blog/getMediumData'];
-
         vm.userData = Array.from(data.user);
         let postArray = Array.from(data.posts);
         if (postArray.length <= maxPosts) {
@@ -113,18 +115,28 @@ export default {
       vm.userData = JSON.parse(sessionStorage.getItem('mediumUserData'));
       vm.postData = JSON.parse(sessionStorage.getItem('mediumPostData'));
     }
-
-    console.log(this.postData);
   },
   methods: {
     retrieveExtraPosts() {
       let vm = this;
       if (vm.extraPosts.length > 0) {
-        for (let index = 0; index < vm.extraPosts.length; index++) {
-          vm.postData.push(vm.extraPosts.shift());
+        let post = vm.gen.next().value;
+        if (post !== undefined) {
+          vm.postData.push(post);
         }
         sessionStorage.setItem('mediumPostData', JSON.stringify(vm.postData));
       }
+    },
+    returnPostGenerator() {
+      let vm = this;
+      function* postGenerator() {
+        for (let post of vm.extraPosts) {
+          yield post;
+        }
+      }
+
+      let gen = postGenerator();
+      return gen;
     }
   }
 };
