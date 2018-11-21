@@ -18,7 +18,8 @@
     <v-flex xs12 sm8 class="border-top">
       <v-container fluid grid-list-md text-xs-left>
         <v-layout >
-          <v-flex xs3 offset-xs1>
+            <v-flex xs2></v-flex>
+          <v-flex xs2>
             <v-avatar
             :tile="false"
             :size="70"
@@ -27,10 +28,11 @@
             <img :src="require('../../dist/static/Wordmark_White.svg')" alt="avatar">
             </v-avatar>
           </v-flex>
-        <v-flex xs9>
+        <v-flex xs6>
           <h3>{{this.userData.name}}</h3>
           <p>{{this.userData.bio}} {{this.userData.followers}}</p>
         </v-flex>
+           <v-flex xs2></v-flex>
        </v-layout>
       </v-container>
     </v-flex>
@@ -183,4 +185,3 @@ export default {
   border-bottom: solid thin #ffffff38;
 }
 </style>
-
