@@ -1,43 +1,54 @@
 <template>
   <v-container py-5>
     <v-layout>
+    
     <v-flex xs12 sm10 offset-sm1>
-      <v-card>
+      <v-card >
         <v-img
-          src="https://cdn.vuetifyjs.com/images/cards/desert.jpg"
-          aspect-ratio="2.75">
+          :src="require('../../static/MVIMG_20180331_110931.jpg')"
+          aspect-ratio="1.5"
+          height="400"
+       
+          >
         </v-img>
 
         <v-card-title primary-title>
           <div>
-            <h3 class="headline mb-0">Profile</h3>
-            <div>London based Software Engineer specialising in the latest technologies within the .NET and JavaScript ecosystem. Strong knowledge and experience in the following languages, frameworks & packages include C#, MVC, ASP.NET, .NET, SQL, JavaScript, Vue.js, Node.js, HTML, CSS, Webpack, REST Web API. Further experience in developing automation frameworks from scratch for large web projects using Selenium & Specflow in C#. Comfortable working in multi disciplinary, agile environments using both front and back end technologies with a core drive and passion for innovation on each project worked on in addition to being self-sufficient and proactive about learning. Other interests include Music Production, Socialising & Blockchain Tech / Cryptocurrency Markets.</div>
-          </div>
+            <h3 class="headline mb-1 text-uppercase">Profile</h3>
+            <p>London based Software Engineer specialising in the latest technologies within the <strong>.NET and JavaScript</strong> ecosystems. Strong knowledge and experience in developing enterprise-grade web applications covering <strong>SQL databases, Web API development, Front-end development, integration and unit testing.</strong>
+            <br><br>
+            Further experience in developing automation frameworks from scratch for large web projects using Selenium & Specflow in C#. Comfortable working in multi disciplinary, agile environments using both front and back end technologies with a core drive and passion for innovation on each project worked on in addition to being self-sufficient and proactive about learning. Other interests include Music Production, Socialising & Blockchain Tech / Cryptocurrency Markets.
+            </p>
+           </div>
         </v-card-title>
 
+         <v-layout class="justify-center">
         <v-card-actions>
-          <v-chip outline color="red">
-            <v-icon left>mdi-vuejs</v-icon> Vue.js
-          </v-chip>
-          <v-chip outline color="red">
-            <v-icon left>mdi-language-html5</v-icon>HTML5
-          </v-chip>
-          <v-chip outline color="red">
-            <v-icon left>mdi-language-javascript</v-icon>JavaScript
-          </v-chip>
-          <v-chip outline color="red">
-            <v-icon left>mdi-language-csharp</v-icon>C#
-          </v-chip>
-          <v-chip outline color="red">
-            <v-icon left>mdi-language-css3</v-icon>CSS3
-          </v-chip>
-          <v-chip outline color="red">
-            <v-icon left>mdi-nodejs</v-icon>Nodejs
-          </v-chip>
-          <v-chip outline color="red">
-            <v-icon left>mdi-react</v-icon>React
-          </v-chip>
+          <v-flex> 
+            <h3 class=" text-uppercase">Core Languages / Frameworks</h3>
+          </v-flex>
         </v-card-actions>
+        </v-layout>
+
+        <v-layout class="justify-center">
+        <v-card-actions class="pb-2" flex v-for="item in skillIcons" :key="item.skill">
+          <v-flex> 
+          <v-chip :color="item.colour">
+            <v-icon left>{{item.icon}}</v-icon> 
+            <h4>{{item.skill}}</h4>
+          </v-chip>
+          </v-flex>
+        </v-card-actions>
+        </v-layout>
+
+          <v-layout class="justify-center pb-2">
+        <v-card-actions>
+          <v-flex> 
+            <h4 class="text-uppercase text-center pb-1">Other skills</h4>
+            <p>Selenium - Specflow - Jest - ASP.NET - MVC - JQuery - REST APIs - SQL Server - Entity Framework</p>
+          </v-flex>
+        </v-card-actions>
+        </v-layout>
       </v-card>
       
     </v-flex>
@@ -92,6 +103,43 @@ export default {
   },
   data() {
     return {
+      skillIcons: [
+        {
+          skill: 'Vuejs',
+          colour: 'green',
+          icon: 'mdi-vuejs'
+        },
+        {
+          skill: 'HTML5',
+          colour: 'red',
+          icon: 'mdi-language-html5'
+        },
+        {
+          skill: 'JavaScript',
+          colour: 'yellow',
+          icon: 'mdi-language-javascript'
+        },
+        {
+          skill: 'C#',
+          colour: 'pink',
+          icon: 'mdi-language-csharp'
+        },
+        {
+          skill: 'CSS3',
+          colour: 'orange',
+          icon: 'mdi-language-css3'
+        },
+        {
+          skill: 'Nodejs',
+          colour: 'green',
+          icon: 'mdi-nodejs'
+        },
+        {
+          skill: 'TypeScript',
+          colour: 'blue',
+          icon: 'mdi-language-typescript'
+        }
+      ],
       contacts: [
         {
           color: 'blue',
@@ -115,12 +163,8 @@ export default {
       },
       tree: [],
       items: [
-        {
-          name: '.git'
-        },
-        {
-          name: 'node_modules'
-        },
+        { name: '.git' },
+        { name: 'node_modules' },
         {
           name: 'public',
           children: [
@@ -172,3 +216,10 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+.text-center {
+  text-align: center;
+}
+</style>
+

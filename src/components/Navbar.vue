@@ -1,6 +1,6 @@
 <template>
 
-<v-toolbar>
+<v-toolbar class="border-bottom">
   <v-spacer class='font-weight-bold title title-colour'>AWCODEWORKS</v-spacer>
   <v-toolbar-items>
     <v-btn 
@@ -71,9 +71,13 @@ export default {
 
 <style scoped>
 .active {
-  background-color: #a3bad6cf;
+  background-color: #69b97a70;
 }
 .title-colour {
   color: #fff;
+}
+
+.border-bottom{
+  border-bottom: solid thin rgba(128, 128, 128, 0.699)
 }
 </style>

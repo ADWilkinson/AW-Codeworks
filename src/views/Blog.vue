@@ -87,7 +87,7 @@
 export default {
   data() {
     return {
-      userData: [],
+      userData: {},
       postData: [],
       extraPosts: [],
       gen: {},
@@ -110,7 +110,7 @@ export default {
       return vm.$store.dispatch('blog/retrieveMediumData').then(() => {
         vm.loading = false;
         let data = vm.$store.getters['blog/getMediumData'];
-        vm.userData = Array.from(data.user);
+        vm.userData = data.user;
         let postArray = Array.from(data.posts);
         if (postArray.length <= maxPosts) {
           vm.postData = postArray;
