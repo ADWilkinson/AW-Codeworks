@@ -2,11 +2,11 @@
 <v-container py-5 class="panel-bg">
   <v-layout>
      <v-flex sm2 class="sidepanel-bg panel-border-r"></v-flex>
-    <v-flex xs12 sm8 class="panel-border-t title-bg">
+    <v-flex xs12 sm8 class="panel-border-t title-bg ">
       <v-container fluid grid-list-md text-xs-left>
         <v-layout >
         <v-flex xs12 class="text-center">
-          <h1 class="text-uppercase">Blog</h1>
+          <h1 class="text-uppercase">Published Articles</h1>
         </v-flex>
        </v-layout>
       </v-container>
@@ -16,21 +16,21 @@
   <v-layout>
     <v-flex sm2 class="sidepanel-bg panel-border-r"></v-flex>
     <v-flex xs12 sm8 class="border-top">
-      <v-container fluid grid-list-md text-xs-left>
+      <v-container fluid grid-list-md text-xs-left class="off-white-bg">
         <v-layout >
-            <v-flex xs2></v-flex>
-          <v-flex xs2>
+          <v-flex sm2></v-flex>
+          <v-flex sm2 xs12>
             <v-avatar
             :tile="false"
-            :size="70"
+            :size="80"
             color="grey"
             >
-            <img :src="require('../../dist/static/Wordmark_White.svg')" alt="avatar">
+            <img :src="require('../../static/MVIMG_20180331_110930.jpg')" alt="avatar">
             </v-avatar>
           </v-flex>
-        <v-flex xs6>
-          <h3>{{this.userData.name}}</h3>
-          <p>{{this.userData.bio}} {{this.userData.followers}}</p>
+        <v-flex sm6>
+          <h3 class="text-dark-gray">{{this.userData.name}}</h3>
+          <p class="text-dark-gray">{{this.userData.bio}} {{this.userData.followers}}</p>
         </v-flex>
            <v-flex xs2></v-flex>
        </v-layout>
@@ -38,13 +38,19 @@
     </v-flex>
        <v-flex sm2 class="sidepanel-bg  panel-border-l"></v-flex>
   </v-layout>
-  <v-layout>
+  <v-layout class="panel-border-b">
     <v-flex sm2 class="sidepanel-bg panel-border-r"></v-flex>
-    <v-flex xs12 sm6 offset-sm1 class="panel-border-t">
+    <v-flex sm1 class="off-white-bg"></v-flex>
+    <v-flex xs12 sm6 class="panel-border-t pt-3 off-white-bg pb-3">
+      
+      <div v-if="loading" class="text-center">
+        <h3 class="pt-3 pb-3 text-dark-gray">Loading posts...</h3>
+      </div>
+
       <v-container v-for="(value, key) in getPostData" :key="key">
-        <v-card :raised="false" :hover="true" :href="value.url" target="_blank">
+        <v-card :raised="false" :hover="true" :href="value.url" :max-width="600" target="_blank">
           <v-img :contain="true" class="pa-4 mx-4"
-            :src="require('../../dist/static/Wordmark_White.svg')"
+            :src="require('../../static/Wordmark_White.svg')"
           ></v-img>
 
           <v-card-title primary-title border class="border-top">
@@ -64,11 +70,12 @@
         <v-divider></v-divider>
       </v-container>
     </v-flex>
-       <v-flex sm2 offset-sm1 class="sidepanel-bg panel-border-l"></v-flex>
+     <v-flex sm1 class="off-white-bg"></v-flex>
+       <v-flex sm2 class="sidepanel-bg panel-border-l"></v-flex>
   </v-layout>
 <v-layout>
     <v-flex sm2 class="sidepanel-bg panel-border-r"></v-flex>
-    <v-flex xs12 sm8 class="text-center">
+    <v-flex xs12 sm8 class="text-center pt-3 pb-1">
       <v-btn flat color="yellow" @click="retrieveExtraPosts()" outline>View More</v-btn>
     </v-flex>
        <v-flex sm2 class="sidepanel-bg  panel-border-l"></v-flex>
@@ -83,7 +90,8 @@ export default {
       userData: [],
       postData: [],
       extraPosts: [],
-      gen: {}
+      gen: {},
+      loading: false
     };
   },
   computed: {
@@ -98,7 +106,9 @@ export default {
     this.gen = this.returnPostGenerator();
 
     if (!sessionStorage.getItem('mediumUserData') || !sessionStorage.getItem('mediumPostData')) {
+      vm.loading = true;
       return vm.$store.dispatch('blog/retrieveMediumData').then(() => {
+        vm.loading = false;
         let data = vm.$store.getters['blog/getMediumData'];
         vm.userData = Array.from(data.user);
         let postArray = Array.from(data.posts);
@@ -145,8 +155,16 @@ export default {
 </script>
 
 <style scoped>
+.text-dark-gray {
+  color: #2f2f2f;
+}
+
+.off-white-bg {
+  background-color: #ffffffcc;
+}
+
 .title-colour {
-  color: #ddecff;
+  color: #69b97a;
 }
 
 .panel-bg {
@@ -154,7 +172,7 @@ export default {
 }
 
 .title-bg {
-  background-color: #a3bad6cf;
+  background-color: #69b97a70;
 }
 
 .sidepanel-bg {
@@ -178,7 +196,7 @@ export default {
 }
 
 .panel-border-t {
-  border-top: solid thin #ffffff38;
+  border-top: solid thick #333333b2;
 }
 
 .panel-border-b {
