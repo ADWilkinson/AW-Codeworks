@@ -1,6 +1,6 @@
 <template>
-  <v-container py-5>
-    <v-layout>
+  <v-container class="dark-panel-bg" py-5>
+    <v-layout >
     
     <v-flex xs12 sm10 offset-sm1>
       <v-card >
@@ -14,10 +14,10 @@
 
         <v-card-title primary-title>
           <div>
-            <h3 class="headline mb-1 text-uppercase">Profile</h3>
-            <p>London based Software Engineer specialising in the latest technologies within the <strong>.NET and JavaScript</strong> ecosystems. Strong knowledge and experience in developing enterprise-grade web applications covering <strong>SQL databases, Web API development, Front-end development, integration and unit testing.</strong>
-            <br><br>
-            Further experience in developing automation frameworks from scratch for large web projects using Selenium & Specflow in C#. Comfortable working in multi disciplinary, agile environments using both front and back end technologies with a core drive and passion for innovation on each project worked on in addition to being self-sufficient and proactive about learning. Other interests include Music Production, Socialising & Blockchain Tech / Cryptocurrency Markets.
+            <h3 class="headline mb-1 text-uppercase"><strong>Profile</strong></h3>
+            <p>London based Software Engineer specialising in the latest technologies within the <strong>.NET and JavaScript</strong> ecosystems. Strong knowledge and experience in developing enterprise-grade web applications covering <strong>SQL databases, web API development, front-end development, integration and unit testing.</strong>
+            
+            Further experience in developing automation frameworks from scratch for large web projects using <strong>Selenium & Specflow</strong> in C#. Comfortable working in multi disciplinary, <strong>agile environments</strong> using both front and back end technologies with a core drive and passion for innovation on each project worked on in addition to being self-sufficient and proactive about learning.
             </p>
            </div>
         </v-card-title>
@@ -54,10 +54,8 @@
     </v-flex>
   </v-layout>
 
- 
-
  <v-layout>
-    <v-flex xs12 sm8 offset-sm2>
+    <v-flex class="mt-5" xs12 sm8 offset-sm2>
     
       <h2> Projects</h2>
       <v-divider></v-divider>
@@ -67,7 +65,7 @@
    </v-flex>
  </v-layout>
  
- <v-layout mb-5>
+ <v-layout mb-5 mt-5>
     <v-flex xs3></v-flex>
     <v-flex xs6>
       <contact-form></contact-form>
@@ -163,52 +161,62 @@ export default {
       },
       tree: [],
       items: [
-        { name: '.git' },
-        { name: 'node_modules' },
         {
-          name: 'public',
+          name: '.private_repositories',
           children: [
             {
-              name: 'static',
-              children: [
-                {
-                  name: 'logo.png',
-                  icon: 'png'
-                }
-              ]
-            },
-            {
-              name: 'favicon.ico',
-              icon: 'png'
-            },
-            {
-              name: 'index.html',
-              icon: 'html'
+              name: 'README.md',
+              icon: 'md'
             }
           ]
         },
         {
-          name: '.gitignore',
-          icon: 'txt'
+          name: 'public_repositories',
+          children: [
+            {
+              name: 'DogeBot (Public)',
+              children: [
+                {
+                  name: 'README.md',
+                  icon: 'md'
+                }
+              ]
+            },
+            {
+              name: 'AWCodeWorks (Public)',
+              children: [
+                {
+                  name: 'README.md',
+                  icon: 'md'
+                }
+              ]
+            },
+            {
+              name: 'UnityAsset.ObjectPoolFactory',
+              children: [
+                {
+                  name: 'README.md',
+                  icon: 'md'
+                }
+              ]
+            },
+            {
+              name: 'UnityAsset.ObjectGenerator',
+              children: [
+                {
+                  name: 'README.md',
+                  icon: 'md'
+                }
+              ]
+            }
+          ]
         },
         {
-          name: 'babel.config.js',
-          icon: 'js'
-        },
-        {
-          name: 'package.json',
+          name: 'github.profile',
           icon: 'json'
         },
         {
-          name: 'README.md',
-          icon: 'md'
-        },
-        {
-          name: 'vue.config.js',
-          icon: 'js'
-        },
-        {
-          name: 'yarn.lock',
+          name: '.gitignore',
           icon: 'txt'
         }
       ]
@@ -220,6 +228,10 @@ export default {
 <style scoped>
 .text-center {
   text-align: center;
+}
+
+.dark-panel-bg {
+  background-color: #212121;
 }
 </style>
 

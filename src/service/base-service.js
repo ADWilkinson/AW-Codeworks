@@ -17,7 +17,8 @@ const initAxios = () => {
 
   api.interceptors.request.use(
     config => {
-      console.log('[Req] URL: ', config.url);
+      var endPoint = config.url.split('/').pop();
+      console.log('[Req] URL: ', endPoint);
       return config;
     },
     error => {
