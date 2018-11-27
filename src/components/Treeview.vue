@@ -7,7 +7,6 @@
       item-key="name"
       open-on-click
       :active.sync="active"
-      @update:active="test"
       >
       
       <template slot="prepend" slot-scope="{ item, open, leaf }">
@@ -37,10 +36,12 @@ export default {
       get: () => {
         return this.tree;
       };
-    },
-    test: (payload) => {
-      console.log(payload)
     }
+  },
+  watch: {
+     active: (newVal) => {
+        this.$store.commit('home/setCurrentFolder', view);
+     }
   }
 };
 </script>

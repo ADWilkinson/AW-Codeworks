@@ -30,7 +30,7 @@
           </v-flex>
         <v-flex sm6>
           <h3 class="text-dark-gray">{{this.userData.name}}</h3>
-          <p class="text-dark-gray">{{this.userData.bio}} {{this.userData.followers}}</p>
+          <p class="text-dark-gray"><i>{{this.userData.bio}}</i></p>
         </v-flex>
            <v-flex xs2></v-flex>
        </v-layout>
@@ -41,14 +41,14 @@
   <v-layout class="panel-border-b">
     <v-flex sm2 class="sidepanel-bg panel-border-r"></v-flex>
     <v-flex sm1 class="off-white-bg"></v-flex>
-    <v-flex xs12 sm6 class="panel-border-t pt-3 off-white-bg pb-3">
+    <v-flex xs12 sm6 class="panel-border-t pt-3 off-white-bg pb-3 ">
       
       <div v-if="loading" class="text-center">
         <h3 class="pt-3 pb-3 text-dark-gray">Loading posts...</h3>
       </div>
 
       <v-container v-for="(value, key) in getPostData" :key="key">
-        <v-card :raised="false" :hover="true" :href="value.url" :max-width="600" target="_blank">
+        <v-card class="margin-auto" :raised="false" :hover="true" :href="value.url" :max-width="600" target="_blank">
           <v-img :contain="true" class="pa-4 mx-4"
             :src="require('../../static/Wordmark_White.svg')"
           ></v-img>
@@ -201,5 +201,9 @@ export default {
 
 .panel-border-b {
   border-bottom: solid thin #ffffff38;
+}
+
+.margin-auto {
+  margin: auto;
 }
 </style>

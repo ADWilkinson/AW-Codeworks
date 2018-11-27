@@ -3,7 +3,7 @@
     <v-layout >
     
     <v-flex xs12 sm10 offset-sm1>
-      <v-card >
+      <v-card class="margin-auto" max-width="80%">
         <v-img
           :src="require('../../static/MVIMG_20180331_110931.jpg')"
           aspect-ratio="1.5"
@@ -60,7 +60,7 @@
       <h2> Projects</h2>
       <v-divider></v-divider>
       
-      <treeview :open="open" :tree="tree" :icons="icons" :items="items" ></treeview>
+      <treeview :open="open" :tree="tree" :icons="icons" :items="items" @clicked="folderSelected" ></treeview>
       
    </v-flex>
      <v-flex class="mt-5" xs12 sm4>
@@ -208,6 +208,11 @@ export default {
         }
       ]
     };
+  },
+  methods: {
+    folderSelected: payload => {
+      console.log(payload);
+    }
   }
 };
 </script>
@@ -219,6 +224,9 @@ export default {
 
 .dark-panel-bg {
   background-color: #212121;
+}
+.margin-auto {
+  margin: auto;
 }
 </style>
 
