@@ -55,13 +55,20 @@
   </v-layout>
 
  <v-layout>
-    <v-flex class="mt-5" xs12 sm8 offset-sm2>
+    <v-flex class="mt-5" xs12 sm4 offset-sm2>
     
       <h2> Projects</h2>
       <v-divider></v-divider>
       
       <treeview :open="open" :tree="tree" :icons="icons" :items="items" ></treeview>
       
+   </v-flex>
+     <v-flex class="mt-5" xs12 sm4>
+    
+      <h4 class="text-center">File</h4>
+      <p></p>
+      
+   
    </v-flex>
  </v-layout>
  
@@ -175,39 +182,19 @@ export default {
           children: [
             {
               name: 'DogeBot (Public)',
-              children: [
-                {
-                  name: 'README.md',
-                  icon: 'md'
-                }
-              ]
+              icon: 'md'
             },
             {
               name: 'AWCodeWorks (Public)',
-              children: [
-                {
-                  name: 'README.md',
-                  icon: 'md'
-                }
-              ]
+              icon: 'md'
             },
             {
               name: 'UnityAsset.ObjectPoolFactory',
-              children: [
-                {
-                  name: 'README.md',
-                  icon: 'md'
-                }
-              ]
+              icon: 'md'
             },
             {
               name: 'UnityAsset.ObjectGenerator',
-              children: [
-                {
-                  name: 'README.md',
-                  icon: 'md'
-                }
-              ]
+              icon: 'md'
             }
           ]
         },

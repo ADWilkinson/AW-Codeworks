@@ -5,7 +5,10 @@
       :items="items"
       activatable
       item-key="name"
-      open-on-click>
+      open-on-click
+      :active.sync="active"
+      @update:active="test"
+      >
       
       <template slot="prepend" slot-scope="{ item, open, leaf }">
         <v-icon v-if="!item.icon">
@@ -26,11 +29,17 @@ export default {
     items: Array,
     icons: Object
   },
+  data: () => ({
+    active: []
+  }),
   computed: {
     getTree() {
       get: () => {
         return this.tree;
       };
+    },
+    test: (payload) => {
+      console.log(payload)
     }
   }
 };
