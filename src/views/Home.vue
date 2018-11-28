@@ -69,7 +69,7 @@
         <v-card-title primary-title>
           <div>
             <h3 class="mb-1 text-uppercase"><strong>File: {{this.folder !== undefined ? this.folder.name : '' }}</strong></h3>
-            <p>{{this.folder !== undefined ? this.folder.text : ''}}</p>
+            <p v-html="this.folder !== undefined ? this.folder.text : ''"></p>
            </div>
         </v-card-title>
 
@@ -183,7 +183,8 @@ export default {
             {
               name: 'Private.md',
               icon: 'md',
-              text: 'test',
+              text:
+                'A few projects I am working on either in a professional capacity or private are not publically visible. Please get in contact if you would like to know more.',
               link: 'https://github.com/ADWilkinson'
             }
           ]
@@ -194,25 +195,29 @@ export default {
             {
               name: 'DogeBot.md',
               icon: 'md',
-              text: 'test',
+              text:
+                'DogeBot is a multilayered chat bot project ultimately consisting of:<br><br> <ul><li>a .NET Core Web API project hosted in the cloud</li><li>a nodejs application which is the bot itself which interacts and handles user requests</li><li>and finally a front end web application to be planned.</li></ul>',
               link: 'https://github.com/DogeNet/DogeBot'
             },
             {
               name: 'AWCodeWorks.md',
               icon: 'md',
-              text: 'test',
+              text:
+                'This website! This website is a showcase in knowledge in modern front end related frameworks and packages. Vue, Vuetify, Vue Router, Vuex, Webpack, Babel, Firebase (Cloud Functions), Axios, Eslint, ES6+ Standards',
               link: 'https://github.com/ADWilkinson/AW-Codeworks'
             },
             {
               name: 'UnityAsset.ObjectPoolFactory.md',
               icon: 'md',
-              text: 'test',
+              text:
+                'A helper asset that I had published on the Unity asset store for a limited time before not having the time to maintain the package. This tool would generate any number of customisable objects for you at during development or at runtime. Proved very useful for quick prototyping.',
               link: 'https://github.com/ADWilkinson/UnityAsset.ObjectPoolFactory'
             },
             {
               name: 'UnityAsset.ObjectGenerator.md',
               icon: 'md',
-              text: 'test',
+              text:
+                "A helper asset I had published on the Unity asset store for a limited time before not having the time to maintain the package. This tool allowed you to generate fully functional and customisable 'object pools', which ultimate allow for much better memory usage compared to constantly destroying and reinstantiated objects.",
               link: 'https://github.com/ADWilkinson/UnityAsset.ObjectGenerator'
             }
           ]
@@ -220,7 +225,8 @@ export default {
         {
           name: 'github.profile',
           icon: 'json',
-          text: 'test',
+          text:
+            'Please follow the link below to navigate to my Github profile where you will see that I am largely active within development projects and always pushing to learn new skills, even beyond the scope of my current industry job.',
           link: 'https://github.com/ADWilkinson'
         },
         {
