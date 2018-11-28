@@ -182,9 +182,9 @@ export default {
           children: [
             {
               name: 'Private.md',
-              icon: 'md',
+              icon: 'txt',
               text:
-                'A few projects I am working on either in a professional capacity or private are not publically visible. Please get in contact if you would like to know more.',
+                'A few projects I am working on either in a professional capacity or as a side project that are not publically visible. Please get in contact using the form at the bottom of the page if you would like to know more about these.',
               link: 'https://github.com/ADWilkinson'
             }
           ]
@@ -196,28 +196,28 @@ export default {
               name: 'DogeBot.md',
               icon: 'md',
               text:
-                'DogeBot is a multilayered chat bot project ultimately consisting of:<br><br> <ul><li>a .NET Core Web API project hosted in the cloud</li><li>a nodejs application which is the bot itself which interacts and handles user requests</li><li>and finally a front end web application to be planned.</li></ul>',
+                'DogeBot is a multi-layered Discordchat bot project ultimately consisting of:<br><br> <ul><li><strong>.NET Core Web API</strong> solution hosted in azure.</li><li><strong>Nodejs application</strong> (the bot itself), which interacts and handles user requests via the .NET Core API.</li><li><strong>Front-end web application</strong> in the planning phase with the intention to use vue.js</li></ul>',
               link: 'https://github.com/DogeNet/DogeBot'
             },
             {
               name: 'AWCodeWorks.md',
               icon: 'md',
               text:
-                'This website! This website is a showcase in knowledge in modern front end related frameworks and packages. Vue, Vuetify, Vue Router, Vuex, Webpack, Babel, Firebase (Cloud Functions), Axios, Eslint, ES6+ Standards',
+                'This website! This website is a showcase in knowledge in modern front end related frameworks and packages.<br><br><ul><li><strong>Vue</strong> (SPA)</li><li><strong>Vuetify</strong> (Framework used for styling)</li><li><strong>Vue Router</strong></li><li><strong>Vuex</strong> (Use of state management with external API)</li><li><strong>Webpack</strong></li><li><strong>Babel</strong></li><li><strong>Firebase</strong> (Cloud Functions)</li><li><strong>Axios</strong> (HTTP provider for service)</li><li><strong>Eslint</strong></li><li><strong>ES6+ Standards</strong></li></ul>',
               link: 'https://github.com/ADWilkinson/AW-Codeworks'
             },
             {
               name: 'UnityAsset.ObjectPoolFactory.md',
               icon: 'md',
               text:
-                'A helper asset that I had published on the Unity asset store for a limited time before not having the time to maintain the package. This tool would generate any number of customisable objects for you at during development or at runtime. Proved very useful for quick prototyping.',
+                'A <strong>C# based</strong> helper asset that I had published on the <strong>Unity</strong> asset store for a limited time before not having the time to maintain the package.<br><br>This tool would generate any number of customisable objects for you at during development or at runtime. Proved very useful for quick prototyping when creating some hobby phone games.',
               link: 'https://github.com/ADWilkinson/UnityAsset.ObjectPoolFactory'
             },
             {
               name: 'UnityAsset.ObjectGenerator.md',
               icon: 'md',
               text:
-                "A helper asset I had published on the Unity asset store for a limited time before not having the time to maintain the package. This tool allowed you to generate fully functional and customisable 'object pools', which ultimate allow for much better memory usage compared to constantly destroying and reinstantiated objects.",
+                "A <strong>C#</strong> based helper asset I had published on the <strong>Unity</strong> asset store for a limited time before not having the time to maintain the package.<br><br>This tool allowed you to generate fully functional and customisable 'object pools', which ultimate allow for much better memory usage compared to constantly destroying and reinstantiated objects.",
               link: 'https://github.com/ADWilkinson/UnityAsset.ObjectGenerator'
             }
           ]
@@ -226,13 +226,13 @@ export default {
           name: 'github.profile',
           icon: 'json',
           text:
-            'Please follow the link below to navigate to my Github profile where you will see that I am largely active within development projects and always pushing to learn new skills, even beyond the scope of my current industry job.',
+            'Please follow the link below to navigate to my <strong>Github</strong> profile where you will see that I am largely active within development projects and always pushing to learn new skills, even beyond the scope of my current industry job.',
           link: 'https://github.com/ADWilkinson'
         },
         {
           name: '.gitignore',
           icon: 'txt',
-          text: 'test'
+          text: ''
         }
       ]
     };
