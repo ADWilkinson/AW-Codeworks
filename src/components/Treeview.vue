@@ -39,9 +39,10 @@ export default {
     }
   },
   watch: {
-     active: (newVal) => {
-        this.$store.commit('home/setCurrentFolder', view);
-     }
+    active(newVal) {
+      this.$store.commit('home/setCurrentFolder', newVal);
+      this.$emit('clicked');
+    }
   }
 };
 </script>
