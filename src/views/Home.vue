@@ -1,8 +1,8 @@
 <template>
   <v-container class="dark-panel-bg" py-5>
     <v-layout >
-    
-    <v-flex xs12 sm10 offset-sm1>
+    <v-flex sm2></v-flex>
+    <v-flex xs12 sm8>
       <v-card class="margin-auto" max-width="100%">
         <v-img
           :src="require('../../static/MVIMG_20180331_110931.jpg')"
@@ -30,10 +30,10 @@
         </v-card-actions>
         </v-layout>
 
-        <v-layout class="justify-center">
+        <v-layout class="justify-center widget">
         <v-card-actions class="pb-2" flex v-for="item in skillIcons" :key="item.skill">
-          <v-flex> 
-          <v-chip :color="item.colour">
+          <v-flex>  
+          <v-chip  class="widget-width":color="item.colour">
             <v-icon left>{{item.icon}}</v-icon> 
             <h4>{{item.skill}}</h4>
           </v-chip>
@@ -52,10 +52,12 @@
       </v-card>
       
     </v-flex>
+    <v-flex sm2></v-flex>
   </v-layout>
 
  <v-layout>
-    <v-flex id="tree-container" class="mt-5 dark-border tree-padding" xs12 sm4 offset-sm2>
+    <v-flex sm2 d-flex></v-flex>
+    <v-flex id="tree-container" class="mt-5 dark-border tree-padding" d-flex xs12 sm4>
     
       <h2> Projects</h2>
       <v-divider></v-divider>
@@ -63,7 +65,7 @@
       <treeview @clicked="selectTab()" :open="open" :tree="tree" :icons="icons" :items="items" ></treeview>
       
    </v-flex>
-     <v-flex class="mt-5" xs12 sm4>
+    <v-flex class="mt-5" d-flex xs12 sm4>
     <v-card class="margin-auto" height="100%">
 
         <v-card-title primary-title>
@@ -73,7 +75,7 @@
            </div>
         </v-card-title>
 
-        <v-card-actions style="  position: absolute; bottom: 0; right: 0;">
+        <v-card-actions class="github-button-position">
           <v-flex> 
             <v-btn target="_blank" :href="this.folder !== undefined ? this.folder.link : ''">Github Repo</v-btn>
           </v-flex>
@@ -82,11 +84,12 @@
       
    
    </v-flex>
+      <v-flex sm2 d-flex></v-flex>
  </v-layout>
  
  <v-layout mb-5 mt-5>
-    <v-flex xs1 sm3></v-flex>
-    <v-flex xs10 sm6>
+    <v-flex xs1 sm4></v-flex>
+    <v-flex xs10 sm4>
       <v-layout justify-center>
         <div style="text-decoration: none;">
            <v-avatar class="ma-3" size="76px" :color="this.contacts[0].color">
@@ -94,9 +97,9 @@
            </v-avatar>
         </div>
        </v-layout>
-      <contact-form></contact-form>
+      <contact-form class="pt-3"></contact-form>
     </v-flex>
-    <v-flex xs1 sm3></v-flex>
+    <v-flex xs1 sm4></v-flex>
  </v-layout>
 
 </v-container>
@@ -289,6 +292,21 @@ export default {
 .tree-padding {
   padding: 10px;
   padding-left: 20px !important;
+}
+
+@media only screen and (max-width: 1900px){
+  .widget{
+    display: block;
+  }
+  .widget-width{
+    width: 100%;
+  }
+}
+
+.github-button-position{
+  position: absolute; 
+  bottom: 0; 
+  right: 0;
 }
 </style>
 
