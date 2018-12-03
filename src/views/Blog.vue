@@ -171,13 +171,11 @@ export default {
       }
     },
     returnPostGenerator() {
-      let vm = this;
       function* postGenerator() {
         for (let post of vm.extraPosts) {
           yield post;
         }
       }
-
       let gen = postGenerator();
       return gen;
     }
