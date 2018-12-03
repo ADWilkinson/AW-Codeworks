@@ -56,17 +56,17 @@
   </v-layout>
 
  <v-layout>
-    <v-flex sm2 d-flex></v-flex>
-    <v-flex id="tree-container" class="mt-5 dark-border tree-padding" d-flex xs12 sm4>
+    <v-flex sm3></v-flex>
+    <v-flex id="tree-container" class="mt-5 dark-border tree-padding" xs12 sm3>
     
       <h2> Projects</h2>
       <v-divider></v-divider>
       
       <treeview @clicked="selectTab()" :open="open" :tree="tree" :icons="icons" :items="items" ></treeview>
       
-   </v-flex>
-    <v-flex class="mt-5" d-flex xs12 sm4>
-    <v-card class="margin-auto" height="100%">
+    </v-flex>
+    <v-flex class="mt-5" xs12 sm3>
+      <v-card class="margin-auto" height="100%">
 
         <v-card-title primary-title>
           <div>
@@ -80,16 +80,14 @@
             <v-btn target="_blank" :href="this.folder !== undefined ? this.folder.link : ''">Github Repo</v-btn>
           </v-flex>
         </v-card-actions>
-    </v-card>
-      
-   
-   </v-flex>
-      <v-flex sm2 d-flex></v-flex>
+      </v-card>
+    </v-flex>
+    <v-flex sm3></v-flex>
  </v-layout>
  
  <v-layout mb-5 mt-5>
-    <v-flex xs1 sm4></v-flex>
-    <v-flex xs10 sm4>
+    <v-flex xs1 sm2 md4></v-flex>
+    <v-flex xs10 sm6 md4>
       <v-layout justify-center>
         <div style="text-decoration: none;">
            <v-avatar class="ma-3" size="76px" :color="this.contacts[0].color">
@@ -99,7 +97,7 @@
        </v-layout>
       <contact-form class="pt-3"></contact-form>
     </v-flex>
-    <v-flex xs1 sm4></v-flex>
+    <v-flex xs1 sm2 md4></v-flex>
  </v-layout>
 
 </v-container>
