@@ -1,8 +1,7 @@
 <template>
   <v-container class="dark-panel-bg" py-5>
     <v-layout >
-    <v-flex sm2></v-flex>
-    <v-flex xs12 sm8>
+    <v-flex xs12 sm8 offset-sm2>
       <v-card class="margin-auto" max-width="100%">
         <v-img
           :src="require('../../static/MVIMG_20180331_110931.jpg')"
@@ -14,11 +13,14 @@
 
         <v-card-title primary-title>
           <div>
-            <h3 class="headline mb-1 text-uppercase"><strong>Profile</strong></h3>
+          
+          <v-container>
+            <h3 class="headline mb-2 text-uppercase"><strong>Profile</strong></h3>
             <p>London based Software Engineer specialising in the latest technologies within the <strong>.NET and JavaScript</strong> ecosystems. Strong knowledge and experience in developing enterprise-grade web applications covering <strong>SQL databases, web API development, front-end development, integration and unit testing.</strong>
             
             Further experience in developing automation frameworks from scratch for large web projects using <strong>Selenium & Specflow</strong> in C#. Comfortable working in multi disciplinary, <strong>agile environments</strong> using both front and back end technologies with a core drive and passion for innovation on each project worked on in addition to being self-sufficient and proactive about learning.
             </p>
+            </v-container>
            </div>
         </v-card-title>
 
@@ -52,12 +54,10 @@
       </v-card>
       
     </v-flex>
-    <v-flex sm2></v-flex>
   </v-layout>
 
  <v-layout>
-    <v-flex sm3></v-flex>
-    <v-flex id="tree-container" class="mt-5 dark-border tree-padding" xs12 sm3>
+    <v-flex id="tree-container" class="mt-5 dark-border tree-padding" xs12 sm3 offset-sm3>
     
       <h2> Projects</h2>
       <v-divider></v-divider>
@@ -82,12 +82,10 @@
         </v-card-actions>
       </v-card>
     </v-flex>
-    <v-flex sm3></v-flex>
  </v-layout>
  
  <v-layout mb-5 mt-5>
-    <v-flex xs1 sm2 md4></v-flex>
-    <v-flex xs10 sm6 md4>
+    <v-flex xs10 sm6 md4 offset-sm2 offset-md4>
       <v-layout justify-center>
         <div style="text-decoration: none;">
            <v-avatar class="ma-3" size="76px" :color="this.contacts[0].color">
@@ -97,7 +95,6 @@
        </v-layout>
       <contact-form class="pt-3"></contact-form>
     </v-flex>
-    <v-flex xs1 sm2 md4></v-flex>
  </v-layout>
 
 </v-container>
