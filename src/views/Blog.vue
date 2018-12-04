@@ -120,13 +120,10 @@ export default {
     }
   },
   created() {
-    const maxPosts = 5;
+    const maxPosts = 3;
     let vm = this;
 
     this.gen = this.returnPostGenerator();
-    if (vm.extraPosts < 1) {
-      this.postsFinished = true;
-    }
 
     if (
       !sessionStorage.getItem("mediumUserData") ||
@@ -138,6 +135,7 @@ export default {
         let data = vm.$store.getters["blog/getMediumData"];
         vm.userData = data.user;
         let postArray = Array.from(data.posts);
+
         if (postArray.length <= maxPosts) {
           vm.postData = postArray;
           sessionStorage.setItem("mediumPostData", JSON.stringify(postArray));
@@ -147,6 +145,11 @@ export default {
           sessionStorage.setItem("mediumPostData", JSON.stringify(slicedArr));
           vm.extraPosts = postArray.slice(maxPosts, postArray.length);
         }
+
+        if (vm.extraPosts < 1) {
+          vm.postsFinished = true;
+        }
+
         sessionStorage.setItem("mediumUserData", JSON.stringify(data.user));
       });
     } else {
@@ -171,6 +174,7 @@ export default {
       }
     },
     returnPostGenerator() {
+      let vm = this;
       function* postGenerator() {
         for (let post of vm.extraPosts) {
           yield post;
