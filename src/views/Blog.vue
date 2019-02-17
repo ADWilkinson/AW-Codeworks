@@ -1,5 +1,6 @@
 <template>
   <v-container py-5 class="panel-bg">
+    <!-- Page Title Section -->
     <v-layout>
       <v-flex sm2 class="sidepanel-bg panel-border-r"></v-flex>
       <v-flex xs12 sm8 class="panel-border-t title-bg">
@@ -13,6 +14,8 @@
       </v-flex>
       <v-flex sm2 class="sidepanel-bg panel-border-l"></v-flex>
     </v-layout>
+
+    <!-- Profile Section -->
     <v-layout>
       <v-flex sm2 class="sidepanel-bg panel-border-r"></v-flex>
       <v-flex xs12 sm8 class="border-top">
@@ -36,6 +39,8 @@
       </v-flex>
       <v-flex sm2 class="sidepanel-bg panel-border-l"></v-flex>
     </v-layout>
+
+    <!-- Blog Posts Section -->
     <v-layout class="panel-border-b">
       <v-flex sm2 class="sidepanel-bg panel-border-r"></v-flex>
       <v-flex sm1 class="off-white-bg"></v-flex>
@@ -84,13 +89,15 @@
       <v-flex sm1 class="off-white-bg"></v-flex>
       <v-flex sm2 class="sidepanel-bg panel-border-l"></v-flex>
     </v-layout>
+
+    <!-- Action Buttons Section -->
     <v-layout>
       <v-flex sm2 class="sidepanel-bg panel-border-r"></v-flex>
       <v-flex xs12 sm8 class="text-center pt-3 pb-1">
         <v-btn
           flat
           color="yellow"
-          :disabled="this.genStatus"
+          :disabled="this.postQuantityStatus"
           @click="retrieveExtraPosts()"
           outline
         >View More</v-btn>
@@ -103,85 +110,91 @@
 export default {
   data() {
     return {
+      initialPostCount: 3,
       userData: {},
       postData: [],
       extraPosts: [],
-      gen: {},
       loading: false,
-      postsFinished: false
+      postsEmpty: false
     };
   },
   computed: {
     getPostData() {
       return this.postData;
     },
-    genStatus() {
-      return this.postsFinished;
+    postQuantityStatus() {
+      return this.postsEmpty;
     }
   },
   created() {
-    const maxPosts = 3;
     let vm = this;
 
-    this.gen = this.returnPostGenerator();
+    // Our initial limit on how many posts we want to display on first load
+    const maxPosts = vm.initialPostCount;
 
+    // We will retrieve the posts from session storage in the first case to avoid unecessary calls to the cloud function
     if (
       !sessionStorage.getItem("mediumUserData") ||
       !sessionStorage.getItem("mediumPostData")
     ) {
+      // Toggle the loading status to give a visual to the user that we are retrieving blog posts
       vm.loading = true;
+
+      // Dispatch the operation to retrieve the blog posts from our firebase cloud function
       return vm.$store.dispatch("blog/retrieveMediumData").then(() => {
+        // Toggle off the loading text as we now have our data ready to use
         vm.loading = false;
+
+        // Retrieving the posts that were commited to the Vuex state
         let data = vm.$store.getters["blog/getMediumData"];
+
+        // User profile data
         vm.userData = data.user;
+        sessionStorage.setItem("mediumUserData", JSON.stringify(vm.userData));
+
+        // User blog post data
         let postArray = Array.from(data.posts);
 
         if (postArray.length <= maxPosts) {
           vm.postData = postArray;
           sessionStorage.setItem("mediumPostData", JSON.stringify(postArray));
         } else {
-          let slicedArr = postArray.slice(0, maxPosts);
-          vm.postData = slicedArr;
-          sessionStorage.setItem("mediumPostData", JSON.stringify(slicedArr));
+          // If we have more blog posts than our max limit then we need to process our array for display
+          vm.postData = postArray.slice(0, maxPosts);
+          sessionStorage.setItem("mediumPostData", JSON.stringify(vm.postData));
+          // We slice and assign the extra posts into a new array for retrieving on request
           vm.extraPosts = postArray.slice(maxPosts, postArray.length);
         }
-
-        if (vm.extraPosts < 1) {
-          vm.postsFinished = true;
-        }
-
-        sessionStorage.setItem("mediumUserData", JSON.stringify(data.user));
       });
     } else {
       vm.userData = JSON.parse(sessionStorage.getItem("mediumUserData"));
       vm.postData = JSON.parse(sessionStorage.getItem("mediumPostData"));
+    }
+
+    // If the extra posts array is empty, we toggle to disable the retrieve button
+    if (vm.extraPosts == 0) {
+      vm.postsEmpty = true;
     }
   },
   methods: {
     retrieveExtraPosts() {
       let vm = this;
 
-      if (vm.extraPosts.length > 0) {
-        let post = vm.gen.next().value;
-        if (post !== undefined) {
-          vm.postData.push(post);
+      // We retrieve 5 posts per request for as long as posts still exist in the respective arrays to move
+      for (let i = 0; i < 5; i++) {
+        if (vm.extraPosts.length > 0) {
+          let post = vm.extraPosts.pop();
+          if (post !== undefined) {
+            vm.postData.push(post);
+          }
+          sessionStorage.setItem("mediumPostData", JSON.stringify(vm.postData));
         }
-        sessionStorage.setItem("mediumPostData", JSON.stringify(vm.postData));
       }
 
-      if (vm.gen.next().done) {
-        vm.postsFinished = true;
+      // If the extra posts array is empty, we toggle to disable the retrieve button
+      if (vm.extraPosts.length == 0) {
+        vm.postsEmpty = true;
       }
-    },
-    returnPostGenerator() {
-      let vm = this;
-      function* postGenerator() {
-        for (let post of vm.extraPosts) {
-          yield post;
-        }
-      }
-      let gen = postGenerator();
-      return gen;
     }
   }
 };

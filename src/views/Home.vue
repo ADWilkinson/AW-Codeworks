@@ -1,5 +1,6 @@
 <template>
   <v-container class="dark-panel-bg" py-5>
+    <!-- User Profile Section -->
     <v-layout>
       <v-flex xs12 sm8 offset-sm2>
         <v-card class="margin-auto" max-width="100%">
@@ -57,6 +58,7 @@
       </v-flex>
     </v-layout>
 
+    <!-- Github Repositories Section -->
     <v-layout>
       <v-flex id="tree-container" class="mt-5 dark-border tree-padding" xs12 sm3 offset-sm3>
         <h2>Projects</h2>
@@ -87,6 +89,8 @@
         </v-card>
       </v-flex>
     </v-layout>
+
+    <!-- Contact Form Section -->
     <v-layout mb-5 mt-5>
       <v-flex xs10 sm6 md6 offset-sm2 offset-md3>
         <v-layout justify-center>
@@ -240,37 +244,42 @@ export default {
   },
   computed: {
     currentFolder() {
+      // Retrieve the current active folder name that the Treeview component has stored in the state
       return this.$store.getters["home/getCurrentFolder"];
     },
     folderInfo() {
+      // Find the relevant folder object in our data object by the current folder name
       return this.flattenedData.find(
         folder => folder.name == this.currentFolder
       );
     }
   },
   methods: {
+    // Called when the treeview component emits our custom folder active event
     selectTab() {
       const vm = this;
+
+      /*
+      Our tree data object that the treeview component requires has not got a flat structure so here we process it
+      into a new array where folder details can easily be searched and displayed on the screen
+      */
+
       let map = new Map(vm.items.entries());
-      let array = [];
+      let folderData = [];
 
       for (let obj of map) {
         if (obj[1].children) {
           for (let child in obj[1].children) {
-            array.push(obj[1].children[child]);
+            folderData.push(obj[1].children[child]);
           }
         } else {
-          array.push(obj[1]);
+          folderData.push(obj[1]);
         }
       }
 
-      this.flattenedData = array;
+      this.flattenedData = folderData;
       this.folder = this.folderInfo;
     }
-  },
-  mounted() {
-    // let height = document.getElementById('tree-container').clientHeight
-    // console.log(height)
   }
 };
 </script>
@@ -308,4 +317,3 @@ export default {
   overflow-wrap: break-word;
 }
 </style>
-

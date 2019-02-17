@@ -1,6 +1,6 @@
 <template>
   <v-app dark>
-    <Navbar rootTab='Home' :navLinks='links'></Navbar>
+    <Navbar rootTab="Home" :navLinks="links"></Navbar>
     <v-content>
       <v-container fluid>
         <router-view></router-view>
@@ -10,7 +10,7 @@
   </v-app>
 </template>
 <script>
-import Navbar from '@/components/Navbar.vue';
+import Navbar from "@/components/Navbar.vue";
 
 export default {
   components: {
@@ -18,7 +18,7 @@ export default {
   },
   data() {
     return {
-      links: ['Home', 'Blog']
+      links: ["Home", "Blog"]
     };
   }
 };

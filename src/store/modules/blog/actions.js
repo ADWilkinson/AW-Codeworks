@@ -1,4 +1,4 @@
-import MediumService from '../../../service/medium-service';
+import MediumService from "../../../service/medium-service";
 
 export default {
   async retrieveMediumData({ commit }) {
@@ -6,6 +6,6 @@ export default {
 
     let response = await service.GetMediumData();
 
-    commit('setMediumData', response);
+    commit("setMediumData", response);
   }
 };
